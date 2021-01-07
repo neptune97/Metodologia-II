@@ -18,14 +18,14 @@ data.frame (a, b) #cria uma tabela convencional
 
 dados <- data.frame (a, b)
 
-# Outra forma de criar data.frames é a partir do comando "tibble" no pacote "dplyr"
+# Outra forma de criar data.frames e a partir do comando "tibble" no pacote "dplyr"
 
 install.packages("tidyverse")
 library (tidyverse)
 dados2 <- tibble (a, b)
 
 
-# Caso seja necessário é possível trocar o nome das colunas e das linhas a partir dos
+# Caso seja necessario e possível trocar o nome das colunas e das linhas a partir dos
 # comandos "colnames" e "rownames"
 
 colnames(dados)[1] <- "nomes"
@@ -33,7 +33,7 @@ colnames(dados)[1] <- "nomes"
 
 # Agora que sabemos como criar um banco de dados dentro do R vamos aprender a importar um
 # ja existente. 
-# Existem duas formas: por comando ou pelo botão "Import Dataset".
+# Existem duas formas: por comando ou pelo botao "Import Dataset".
 
 read.csv ()
 read.csv2 ()
@@ -52,7 +52,7 @@ bd <- read_sav ("https://github.com/neptune97/Metodologia-II/blob/main/Aula%2002
 # 1. seleção de colunas, linhas e elementos
 # Podemos selecionar colunas a partir do uso de colchetes ao lado do nome do banco de
 # dados. Caso queria mais de uma coluna use o intervalo de colunas desejado e escreva-o
-# dentro dos colchetes usando : como separador.
+# dentro dos colchetes usando ":" como separador.
 bd [5]
 
 bd [1:2]
@@ -62,13 +62,13 @@ bd [1:2]
 
 bd [1, 1:2]
 
-# para selecionar elementos específicos usamos o comando c após a virgula e dentro dos
+# para selecionar elementos específicos usamos o comando c() após a virgula e dentro dos
 # parenteses utilizamos a localização do elemento
 
 bd [2, c(8:4)]
 
 
-# outra forma de solucionar uma coluna completa é a partir do comando banco de dados 
+# outra forma de solucionar uma coluna completa e a partir do comando banco de dados 
 # seguido de cifrão
 
 bd$S5

@@ -2,12 +2,11 @@
 ############################################################ AULA 04
 ########################################### AUTOR: FERNANDO DE SOUZA
 
-
-
 library (tidyverse)
 library (readr)
 
 #ler banco de dados
+setwd ("~/PNAD_COVID_112020")
 pnad_covid <- read_csv("PNAD_COVID_112020.csv", col_types = cols(.default = "d"))
 dt <- subset (pnad_covid, pnad_covid$UF == "31")
 
@@ -91,4 +90,3 @@ ggplot (home_c, aes(fill = Cor, x = home_office, y = n)) +
   theme(legend.position = "bottom", legend.background = element_rect(fill="ghostwhite", 
                                                                size=0.7, linetype="blank")) +
   scale_fill_manual(values = c("#9370db","#da70d6","#dda0dd","#e6e6fa"))
-  

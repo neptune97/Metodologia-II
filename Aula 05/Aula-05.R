@@ -2,6 +2,8 @@
 ############################################################ AULA 05
 ########################################### AUTOR: FERNANDO DE SOUZA
 
+library (readr)
+pnad_mg <- read_csv("https://github.com/neptune97/Metodologia-II/blob/main/Aula%2005/pnad_mg2.csv?raw=true", col_types = cols(.default = "d"))
 
 #teste t
 t.test(pnad_covid$C009, mu = 39.69) #bicaudal
@@ -18,7 +20,7 @@ A1 =  sample (1:10, 10, replace = FALSE)
 dt$A2 <- dt$A1 - 2
 
 mean (dt$A1)
-t.test(dt$A2, mu = 5)
+t.test(dt$A2, mu = 3)
 t.test(dt$A2, mu = 5, conf.level = 0.90)
 t.test (dt$A2, mu = 5, alternative = "less")
 
@@ -28,6 +30,7 @@ dt <- infert
 table (dt$spontaneous)
 prop.test(x = c(141, 107), n = c(248,248), alternative = "two.sided",
           correct = TRUE)
+
 
 #chi²
 

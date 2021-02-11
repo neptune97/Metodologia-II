@@ -3,15 +3,9 @@
 ########################################### AUTOR: FERNANDO DE SOUZA
 
 library (tidyverse)
-library (ggplot2)
-setwd ("~/PNAD_COVID_112020")
-pnad_covid <- read_csv("PNAD_COVID_112020.csv", col_types = cols(.default = "d"))
-
-#ler banco de dados
-dt <- subset (pnad_covid, pnad_covid$UF == "31")
-
-dt1 <- dt %>% 
-  filter(UF == 31)
+library (readr)
+#carregando banco de dados
+pnad_mg <- read_csv("https://github.com/neptune97/Metodologia-II/blob/main/Aula%2005/pnad_mg2.csv?raw=true", col_types = cols(.default = "d"))
 
 #plots no R
 

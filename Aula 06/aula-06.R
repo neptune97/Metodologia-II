@@ -97,6 +97,7 @@ bd <- dt %>%
     Netflix == 0 | `Prime Video` == 1  ~ "Prime"
   ))
 
+## excluindo o símbolo (%) e transformando os números de "character" para "numérico"
 bd$`Rotten Tomatoes` <- gsub("%", "", dt2$`Rotten Tomatoes`)
 bd$`Rotten Tomatoes` <- as.numeric(dt2$`Rotten Tomatoes`)
 

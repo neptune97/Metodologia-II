@@ -40,6 +40,20 @@ t.test (controle, experimental)
 boxplot (controle, experimental)
 boxplot (notas ~ disc)
 
+x <- data.frame (notas, disc)
+
+x %>% 
+  ggplot (aes (x = notas, y = disc)) +
+  geom_boxplot() + 
+  coord_flip() +
+  labs (
+    x = "Notas",
+    y = "Disciplinas",
+    title = "Diferenças entre as notas nas disciplinas A e B",
+    subtitle = "Dados fictícios"
+  ) +
+  theme_light()
+
  
 
 # diferenças de proporção
@@ -49,7 +63,7 @@ rownames(survivors) <- c('no seat belt','seat belt')
 
 prop.test(survivors)
 
-# Dois grupos, cada um com 500 indivíduos, possuem fumantes. Apesar disso
+# Dois grupos (A e B), cada um com 500 indivíduos, possuem pessoas que fumam com bastante frequência. Apesar disso
 # somente os fumantes do grupo A desenvolveram câncer de pulmão.
 # Numa tentativa de entender a relação do fumo com a doença foi-se 
 # contado quantas pessoas de cada grupo fumavam.
@@ -83,6 +97,9 @@ dt2 <- dt %>%
     Netflix == 0 | `Prime Video` == 1  ~ "Prime"
   ))
 
+dt2$`Rotten Tomatoes` <- gsub("%", "", dt2$`Rotten Tomatoes`)
+dt2$`Rotten Tomatoes` <- as.numeric(dt2$`Rotten Tomatoes`)
+
 ## estabilização da aleatorização
 set.seed(123)
 
@@ -97,6 +114,9 @@ t.test (b$IMDb ~ b$origem)
 ## testes adicionais: quem tem os maiores filmes?
 t.test(b$Runtime ~ b$origem)
 
+## melhor performance no RT
+t.test(b$`Rotten Tomatoes` ~ b$origem)
+
 ## boxplot IMDB
 b %>% 
   ggplot(aes (x= IMDb, y = origem )) +
@@ -105,6 +125,19 @@ b %>%
     x = "IMDB",
     y = "Empresa",
     title = "Média do IMDB entre Netflix e Amazon Prime",
+    subtitle = "Filmes datados de 1933 à 2020"
+  ) +
+  coord_flip() +
+  theme_minimal()
+
+## nota RT
+b %>% 
+  ggplot(aes (x= `Rotten Tomatoes`, y = origem )) +
+  geom_boxplot(color = c("#eb787d", "#86dbf7"), fill = c("#E50914", "#00A8E1")) +
+  labs (
+    x = "Rotten Tomatoes",
+    y = "Empresa",
+    title = "Média de % no Rotten Tomatoes entre Netflix e Amazon Prime",
     subtitle = "Filmes datados de 1933 à 2020"
   ) +
   coord_flip() +

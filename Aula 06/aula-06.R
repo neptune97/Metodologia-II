@@ -90,21 +90,21 @@ x <- chisq.test(M)
 dt <- read_csv("https://github.com/neptune97/Metodologia-II/blob/main/Aula%2006/MoviesOnStreamingPlatforms_updated.csv?raw=true")
 
 ## criando um banco de dados apenas com filmes da Netflix e da Amazon
-dt2 <- dt %>% 
+bd <- dt %>% 
   filter(Hulu == 0 & `Disney+` == 0) %>% 
   mutate ( origem = case_when (
     Netflix == 1 | `Prime Video` == 0  ~ "Netflix",
     Netflix == 0 | `Prime Video` == 1  ~ "Prime"
   ))
 
-dt2$`Rotten Tomatoes` <- gsub("%", "", dt2$`Rotten Tomatoes`)
-dt2$`Rotten Tomatoes` <- as.numeric(dt2$`Rotten Tomatoes`)
+bd$`Rotten Tomatoes` <- gsub("%", "", dt2$`Rotten Tomatoes`)
+bd$`Rotten Tomatoes` <- as.numeric(dt2$`Rotten Tomatoes`)
 
 ## estabilização da aleatorização
 set.seed(123)
 
 ## coleta de amostras aleatórias do banco de dados
-b <- dt2 %>%
+b <- bd %>%
   group_by (origem) %>% 
   sample_n(100)
 

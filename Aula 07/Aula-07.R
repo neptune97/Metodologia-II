@@ -28,4 +28,16 @@ summary (reg_lin)
 plot (reg_lin)
 
 
+## PLOT GRÁFICO REGRESSÃO ---
+library (tidyverse)
 
+bd %>% 
+  ggplot(aes(youtube, sales)) +
+  geom_point() +
+  labs (
+    x = "Youtube",
+    y = "Vendas (em milhões)",
+    title = "Relação entre Investimento em anúncios no Youtube e Vendas"
+  ) +
+  stat_smooth(method = lm) +
+  theme_minimal()

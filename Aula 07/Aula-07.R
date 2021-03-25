@@ -23,6 +23,12 @@ bd <- marketing # abrindo banco de dados
 cor (bd) # checando correlações
 plot (bd) # plotando gráficos de dispersão
 
+#metodo 2 para checagem de correlação 
+library (corrplot)
+x <- cor(bd)
+corrplot (x)
+
+### REGRESSÃO
 reg_lin <- lm (sales ~ youtube, data = bd) #criando o modelo
 summary (reg_lin)
 plot (reg_lin)
@@ -41,3 +47,6 @@ bd %>%
   ) +
   stat_smooth(method = lm) +
   theme_minimal()
+
+
+

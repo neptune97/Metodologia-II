@@ -14,7 +14,7 @@ library (datarium)
 
 bd <- PlantGrowth # carregando banco de dados
 
-a <- aov(weight ~ group, data = data) # anova
+a <- aov(weight ~ group, data = bd) # anova
 
 TukeyHSD(a) #Tukey Honest Significant Differences
 

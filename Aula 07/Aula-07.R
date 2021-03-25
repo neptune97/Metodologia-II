@@ -3,7 +3,13 @@
 ########################################### AUTOR: FERNANDO DE SOUZA
 
 ---
-  
+#install.packages(corrplot)
+#install.packages(datarium)
+
+library (tidyverse)
+library (corrplot)
+library (datarium)
+
 # ANOVA
 
 bd <- PlantGrowth # carregando banco de dados
@@ -17,14 +23,12 @@ TukeyHSD(a) #Tukey Honest Significant Differences
   
 # REGRESSÃO LINEAR
 
-#install.packages("datarium")
-library (datarium) ## carregando pacote
+#carregando banco de dados do pacote "Datarium"
 bd <- marketing # abrindo banco de dados
 cor (bd) # checando correlações
 plot (bd) # plotando gráficos de dispersão
 
 #metodo 2 para checagem de correlação 
-library (corrplot)
 x <- cor(bd)
 corrplot (x)
 
@@ -35,8 +39,6 @@ plot (reg_lin)
 
 
 ## PLOT GRÁFICO REGRESSÃO ---
-library (tidyverse)
-
 bd %>% 
   ggplot(aes(youtube, sales)) +
   geom_point() +
